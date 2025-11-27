@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NixDeck 2133</title>
+    <link rel="stylesheet" href="styles/blacksite.css">
+</head>
+<body>
+    <!-- Main Application Container -->
+    <div id="nixdeck-root">
+        
+        <!-- Top Status Bar -->
+        <header id="status-bar">
+            <div class="status-left">
+                <span class="status-indicator active"></span>
+                <span class="status-text">BLACKSITE PROTOCOL ACTIVE</span>
+            </div>
+            <div class="status-center">
+                <span id="system-hostname">NIXDECK-2133</span>
+            </div>
+            <div class="status-right">
+                <span id="system-time">00:00:00</span>
+                <span class="status-separator">|</span>
+                <span id="system-uptime">UP: 0h</span>
+            </div>
+        </header>
+
+        <!-- Main Content Area: Three Panel Layout -->
+        <main id="main-container">
+            
+            <!-- Left Rail: Navigation Deck -->
+            <aside id="left-rail">
+                <div class="rail-header">
+                    <h2>DECK</h2>
+                </div>
+                <nav class="deck-nav">
+                    <button class="nav-item active" data-panel="ai-console">
+                        <span class="nav-icon">[AI]</span>
+                        <span class="nav-label">AI Console</span>
+                        <span class="nav-indicator"></span>
+                    </button>
+                    <button class="nav-item" data-panel="rice-studio">
+                        <span class="nav-icon">[RC]</span>
+                        <span class="nav-label">Rice Studio</span>
+                        <span class="nav-indicator"></span>
+                    </button>
+                    <button class="nav-item" data-panel="daemon-workshop">
+                        <span class="nav-icon">[DM]</span>
+                        <span class="nav-label">Daemon Workshop</span>
+                        <span class="nav-indicator"></span>
+                    </button>
+                    <button class="nav-item" data-panel="cron-composer">
+                        <span class="nav-icon">[CR]</span>
+                        <span class="nav-label">Cron Composer</span>
+                        <span class="nav-indicator"></span>
+                    </button>
+                    <button class="nav-item" data-panel="containers">
+                        <span class="nav-icon">[CT]</span>
+                        <span class="nav-label">Containers</span>
+                        <span class="nav-indicator"></span>
+                    </button>
+                    <button class="nav-item" data-panel="theme-lab">
+                        <span class="nav-icon">[TH]</span>
+                        <span class="nav-label">Theme Lab</span>
+                        <span class="nav-indicator"></span>
+                    </button>
+                    <button class="nav-item" data-panel="operations-log">
+                        <span class="nav-icon">[OP]</span>
+                        <span class="nav-label">Operations Log</span>
+                        <span class="nav-indicator"></span>
+                    </button>
+                </nav>
+                
+                <div class="rail-footer">
+                    <button id="loadout-manager-btn" class="footer-btn">
+                        <span>[LM]</span> Loadout Manager
+                    </button>
+                    <button id="settings-btn" class="footer-btn">
+                        <span>[ST]</span> Settings
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Center: AI Console / Operation Console -->
+            <section id="center-panel">
+                
+                <!-- AI Console View -->
+                <div id="ai-console-view" class="panel-view active">
+                    <div class="panel-header">
+                        <h2>AI CONSOLE</h2>
+                        <div class="panel-controls">
+                            <span id="active-loadout">LOADOUT: <span class="loadout-name">DEFAULT</span></span>
+                            <button id="change-loadout-btn" class="control-btn">[CHANGE]</button>
+                        </div>
+                    </div>
+                    
+                    <div class="console-container">
+                        <div id="chat-messages" class="chat-messages">
+                            <!-- System welcome message -->
+                            <div class="message system-message">
+                                <span class="message-time">00:00:00</span>
+                                <span class="message-sender">[SYSTEM]</span>
+                                <span class="message-content">NixDeck 2133 initialized. AI systems online. Type your command or query.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="console-input-area">
+                            <div class="input-prompt">
+                                <span class="prompt-symbol">&gt;&gt;</span>
+                                <input type="text" id="ai-input" placeholder="Enter command or message..." autocomplete="off">
+                            </div>
+                            <button id="send-btn" class="send-btn">[SEND]</button>
+                        </div>
+                    </div>
+
+                    <!-- Operations Queue -->
+                    <div id="operations-queue" class="operations-queue">
+                        <div class="queue-header">
+                            <h3>ACTIVE OPERATIONS</h3>
+                            <span class="queue-count">0</span>
+                        </div>
+                        <div id="operations-list" class="operations-list">
+                            <!-- Operation cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rice Studio View -->
+                <div id="rice-studio-view" class="panel-view">
+                    <div class="panel-header">
+                        <h2>RICE STUDIO</h2>
+                        <div class="panel-controls">
+                            <button class="control-btn">[SNAPSHOT]</button>
+                            <button class="control-btn">[AI ASSIST]</button>
+                        </div>
+                    </div>
+                    
+                    <div class="studio-container">
+                        <div class="component-selector">
+                            <button class="component-btn active" data-component="waybar">[WAYBAR]</button>
+                            <button class="component-btn" data-component="polybar">[POLYBAR]</button>
+                            <button class="component-btn" data-component="eww">[EWW]</button>
+                            <button class="component-btn" data-component="conky">[CONKY]</button>
+                            <button class="component-btn" data-component="kitty">[KITTY]</button>
+                            <button class="component-btn" data-component="alacritty">[ALACRITTY]</button>
+                            <button class="component-btn" data-component="picom">[PICOM]</button>
+                            <button class="component-btn" data-component="dunst">[DUNST]</button>
+                            <button class="component-btn" data-component="rofi">[ROFI]</button>
+                        </div>
+                        
+                        <div class="config-editor">
+                            <div class="editor-header">
+                                <span id="current-component">waybar</span>
+                                <div class="editor-actions">
+                                    <button class="action-btn" id="load-config-btn">[LOAD]</button>
+                                    <button class="action-btn" id="preview-config-btn">[PREVIEW]</button>
+                                    <button class="action-btn" id="apply-config-btn">[APPLY]</button>
+                                </div>
+                            </div>
+                            <textarea id="config-editor" class="config-textarea" placeholder="// Configuration will load here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daemon Workshop View -->
+                <div id="daemon-workshop-view" class="panel-view">
+                    <div class="panel-header">
+                        <h2>DAEMON WORKSHOP</h2>
+                        <div class="panel-controls">
+                            <button class="control-btn" id="new-daemon-btn">[NEW DAEMON]</button>
+                            <button class="control-btn" id="refresh-daemons-btn">[REFRESH]</button>
+                        </div>
+                    </div>
+                    
+                    <div class="daemon-container">
+                        <div class="daemon-list" id="daemon-list">
+                            <!-- Daemon cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cron Composer View -->
+                <div id="cron-composer-view" class="panel-view">
+                    <div class="panel-header">
+                        <h2>CRON COMPOSER</h2>
+                        <div class="panel-controls">
+                            <button class="control-btn" id="new-cron-btn">[NEW JOB]</button>
+                            <button class="control-btn" id="refresh-cron-btn">[REFRESH]</button>
+                        </div>
+                    </div>
+                    
+                    <div class="cron-container">
+                        <div class="cron-list" id="cron-list">
+                            <!-- Cron job cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Containers View -->
+                <div id="containers-view" class="panel-view">
+                    <div class="panel-header">
+                        <h2>DESKTOP CONTAINERS</h2>
+                        <div class="panel-controls">
+                            <button class="control-btn" id="new-container-btn">[NEW CONTAINER]</button>
+                            <button class="control-btn" id="import-container-btn">[IMPORT]</button>
+                        </div>
+                    </div>
+                    
+                    <div class="containers-grid" id="containers-grid">
+                        <!-- Container cards will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Theme Lab View -->
+                <div id="theme-lab-view" class="panel-view">
+                    <div class="panel-header">
+                        <h2>THEME LAB</h2>
+                        <div class="panel-controls">
+                            <button class="control-btn" id="new-theme-btn">[NEW THEME]</button>
+                            <button class="control-btn" id="export-theme-btn">[EXPORT]</button>
+                        </div>
+                    </div>
+                    
+                    <div class="theme-container">
+                        <div class="theme-list" id="theme-list">
+                            <!-- Theme cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operations Log View -->
+                <div id="operations-log-view" class="panel-view">
+                    <div class="panel-header">
+                        <h2>OPERATIONS LOG</h2>
+                        <div class="panel-controls">
+                            <button class="control-btn" id="clear-log-btn">[CLEAR]</button>
+                            <button class="control-btn" id="export-log-btn">[EXPORT]</button>
+                        </div>
+                    </div>
+                    
+                    <div class="log-container">
+                        <div id="operations-log" class="log-output">
+                            <!-- Log entries will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Right: Tabbed Workbenches -->
+            <aside id="right-rail">
+                <div class="rail-header">
+                    <div class="tab-selector">
+                        <button class="tab-btn active" data-tab="info">[INFO]</button>
+                        <button class="tab-btn" data-tab="tools">[TOOLS]</button>
+                        <button class="tab-btn" data-tab="assets">[ASSETS]</button>
+                    </div>
+                </div>
+                
+                <!-- Info Tab -->
+                <div id="info-tab" class="rail-tab active">
+                    <div class="info-section">
+                        <h3>SYSTEM STATUS</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">HOSTNAME:</span>
+                                <span class="info-value" id="info-hostname">---</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">KERNEL:</span>
+                                <span class="info-value" id="info-kernel">---</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">DISTRO:</span>
+                                <span class="info-value" id="info-distro">---</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">UPTIME:</span>
+                                <span class="info-value" id="info-uptime">---</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>AI LOADOUT</h3>
+                        <div class="loadout-info">
+                            <div class="info-item">
+                                <span class="info-label">ACTIVE:</span>
+                                <span class="info-value" id="info-loadout-name">DEFAULT</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">MODEL:</span>
+                                <span class="info-value" id="info-loadout-model">---</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TOOLS:</span>
+                                <span class="info-value" id="info-loadout-tools">---</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>QUICK ACTIONS</h3>
+                        <div class="quick-actions">
+                            <button class="quick-action-btn">[SNAPSHOT NOW]</button>
+                            <button class="quick-action-btn">[RELOAD CONFIGS]</button>
+                            <button class="quick-action-btn">[RESTART DAEMONS]</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools Tab -->
+                <div id="tools-tab" class="rail-tab">
+                    <div class="tools-section">
+                        <h3>TERMINAL</h3>
+                        <div class="mini-terminal">
+                            <div class="terminal-output" id="mini-terminal-output">
+                                <div class="terminal-line">&gt;&gt; Ready</div>
+                            </div>
+                            <div class="terminal-input-area">
+                                <span class="terminal-prompt">$</span>
+                                <input type="text" id="mini-terminal-input" class="terminal-input" placeholder="command...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tools-section">
+                        <h3>FILE BROWSER</h3>
+                        <div class="file-browser">
+                            <div class="file-path">/home/.config/</div>
+                            <div class="file-list" id="file-list">
+                                <!-- Files will be listed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Assets Tab -->
+                <div id="assets-tab" class="rail-tab">
+                    <div class="assets-section">
+                        <h3>SNAPSHOTS</h3>
+                        <div class="asset-list" id="snapshots-list">
+                            <!-- Snapshots will be listed here -->
+                        </div>
+                    </div>
+                    
+                    <div class="assets-section">
+                        <h3>THEMES</h3>
+                        <div class="asset-list" id="themes-list-assets">
+                            <!-- Themes will be listed here -->
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </main>
+
+    </div>
+
+    <!-- Popup Container (for modal popups) -->
+    <div id="popup-container" class="popup-container hidden"></div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js" type="module"></script>
+    <script src="scripts/ai-console.js" type="module"></script>
+    <script src="scripts/rice-studio.js" type="module"></script>
+    <script src="scripts/daemon-workshop.js" type="module"></script>
+    <script src="scripts/cron-composer.js" type="module"></script>
+    <script src="scripts/popups.js" type="module"></script>
+</body>
+</html>
