@@ -1,0 +1,21 @@
+{
+  "name": "nixdeck-2133",
+  "version": "0.1.0",
+  "description": "the blacksite control room for your linux reality",
+  "author": "Splicer",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "lint": "eslint src/scripts/"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.5.3"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.9",
+    "eslint": "^8.56.0"
+  }
+}
